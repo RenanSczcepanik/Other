@@ -1,5 +1,6 @@
 package br.edu.uricer.negocios;
 
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -9,29 +10,16 @@ import static org.junit.Assert.*;
 
 public class RestauranteTest {
     
-    public RestauranteTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
     @Test
-    public void testSomeMethod() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void listarMesasLivres(){
+        Restaurante teste = new Restaurante();
+        assertEquals(6, teste.listarMesasLivres().size());
     }
-    
+    @Test
+    public void ocuparMesa(){
+        Restaurante teste = new Restaurante();
+        List<Mesa> livre = teste.listarMesasLivres();
+        teste.ocuparMesa(livre.get(0));
+        assertEquals(5, teste.listarMesasLivres().size());
+    }
 }
